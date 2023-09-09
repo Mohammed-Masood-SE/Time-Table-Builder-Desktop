@@ -13,6 +13,7 @@ import TimeTableBuilder from "./Builder/TimeTableBuilder";
 import ViewTimeTables from "./Builder/ViewTimeTables";
 import createInitialDirectory from "../UtilityFunctions/CreateInitialDirectory";
 import readFromFile from "../UtilityFunctions/ReadFromFile";
+import saveToFile from "../UtilityFunctions/SaveToFile";
 
 function Home() {
   const [selectedScreen, setSelectedScreen] = useState(0);
@@ -29,7 +30,9 @@ function Home() {
         // Use the data here
         setAvailableClassrooms(data);
       } catch (error) {
-        toast.error("Error getting Available Classrooms from file : <Home.js>");
+        // this means text files dont exist , so create new txt files
+        toast.success("Loaded New Classrooms File : <Home.js> (Ignore)");
+        saveToFile({}, "classrooms");
       }
     };
     let getAvailableLabs = async () => {
@@ -38,7 +41,9 @@ function Home() {
         // Use the data here
         setAvailableLabs(data);
       } catch (error) {
-        toast.error("Error getting Available Labs from file : <Home.js>");
+        // this means text files dont exist , so create new txt files
+        toast.success("Loaded New Labs File : <Home.js> (Ignore)");
+        saveToFile({}, "labs");
       }
     };
     getAvailableClassrooms();
