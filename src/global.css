@@ -5,9 +5,16 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #222831;
+  color: #EEEEEE;
+
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+/* #222831 - Main BG
+#393E46 - Sub Containers
+#00ADB5 - Buttons etc
+#EEEEEE - Text */
+
+h1,h2,h3,h4,h5,h6,img,label,div{
+  margin: 0;
 }

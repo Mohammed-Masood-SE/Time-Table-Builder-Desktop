@@ -1,0 +1,82 @@
+.container{
+    position: absolute;
+    z-index: 2;
+}
+
+.burgerMenu{
+    width: 40px;
+    margin-left: 10px;
+    margin-top: 10px;
+    z-index: 2;
+}
+
+.backIcon{
+    width: 30px;
+    position: absolute;
+    right: -30px;
+    background-color: rgb(0, 0, 0);
+    padding: 10px;
+    border-radius: 100px;
+    border: 1px solid white;
+}
+
+.burgerMenu:hover{
+    cursor: pointer;
+}
+
+.backIcon:hover{
+    cursor: pointer;
+}
+
+.navContainer{
+width: 30vw;
+background-color: #000000;
+height: 100vh;
+position: absolute;
+display: flex;
+flex-direction: column;
+justify-content: center;
+left: -550px;
+transition: 0.5s;
+border-left: 1px solid white;
+border-right: 1px solid white;
+
+}
+
+.showNav{
+    left: 0px;
+}
+
+
+.navItems{
+    display: flex;
+    flex-direction: column;
+}
+
+.navItems h1{
+    color: #00ADB5;
+    padding-left: 20px;
+    font-size:x-large;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-weight: 400;
+
+}
+
+.navItems h3{
+    color: rgb(255, 255, 255);
+    font-weight: 100;
+    padding: 5px;
+    padding-left: 40px;
+    font-size: large;
+    transition: 0.2s;
+}
+
+.navItems h3:hover{
+background-color: #027177;
+cursor: pointer;
+}
+
+.selectedScreen{
+    background-color: #7b5151;
+}

@@ -1,0 +1,105 @@
+.container{
+    background-color: #393E46;
+    position: absolute;
+    top:50px;
+    left: 50px;
+    right: 50px;
+    border-radius: 10px;
+    margin-bottom: 50px;
+    padding: 50px;
+}
+
+.header{
+    text-align: center;
+    font-weight: 200;
+    margin-top: 20px;
+    color: #00ADB5;
+}
+
+.inputContainer{
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    align-items: center;
+}
+
+.inputContainer input{
+    width: 200px;
+    padding: 5px;
+    outline: none;
+    border: none;
+    margin-right: 20px;
+
+}
+
+.inputContainer button{
+    margin-top: 20px;
+    padding: 5px;
+    width: 210px;
+    margin-right: 20px;
+    outline: none;
+    border: 1px solid black;
+    border-radius: 8px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.addAsClassButton{
+    background-color: #00ADB5;
+}
+
+.addAsLabButton{
+    background-color: #cab906;
+}
+
+.inputContainer button:hover{
+    cursor: pointer;
+}
+
+.displayContainer{
+
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.displayContainerHeader{
+    font-weight: 200;
+    font-size: x-large;
+}
+
+.roomHolder{
+
+}
+
+.roomContainer{
+    display: flex;
+    background-color: rgb(255, 255, 255);
+    padding: 10px;
+    margin-top: 15px;
+    border-radius: 8px;
+    position: relative;
+    min-width: 200px;
+}
+
+.roomNumber{
+margin-right: 10px;
+color: #393E46;
+font-size: 20px;
+}
+
+.totalSeats{
+    font-size: medium;
+    color: #393E46;
+}
+
+.closeIcon{
+    position: absolute;
+    width: 25px;
+    right: 0px;
+    top: 0px;
+}
+
+.closeIcon:hover{
+    cursor: pointer;
+}
