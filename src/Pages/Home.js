@@ -11,6 +11,8 @@ import AssignSubjects from "./FacultiesManager/AssignSubjects";
 import TimeTableBuilder from "./Builder/TimeTableBuilder";
 import ViewTimeTables from "./Builder/ViewTimeTables";
 import createInitialDirectory from "../UtilityFunctions/CreateInitialDirectory";
+import readFromFile from "../UtilityFunctions/ReadFromFile";
+
 function Home() {
   const [selectedScreen, setSelectedScreen] = useState(0);
   const [availableClassrooms, setAvailableClassrooms] = useState({});
@@ -19,6 +21,27 @@ function Home() {
   useEffect(() => {
     // Used To Create The Initial Directory If It Does Not Exist
     createInitialDirectory();
+    //Functions to get data stored in files
+    let getAvailableClassrooms = async () => {
+      try {
+        const data = await readFromFile("classrooms.txt");
+        // Use the data here
+        setAvailableClassrooms(data);
+      } catch (error) {
+        console.error("Error getting Available Classrooms from file:", error);
+      }
+    };
+    let getAvailableLabs = async () => {
+      try {
+        const data = await readFromFile("labs.txt");
+        // Use the data here
+        setAvailableLabs(data);
+      } catch (error) {
+        console.error("Error getting Available Labs from file:", error);
+      }
+    };
+    getAvailableClassrooms();
+    getAvailableLabs();
   }, []);
 
   return (
