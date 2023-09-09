@@ -1,0 +1,39 @@
+.container{
+    background-color: white;
+    border-radius: 10px;
+    color: black;
+    padding: 20px;
+    display: flex;
+}
+
+.header{
+    font-weight: 400;
+    font-size: medium;
+    margin-right: 20px;
+    margin-top: 8px;
+}
+
+.buttons{
+    border-radius: 10px;
+    padding: 13px;
+    outline: none;
+    border: none;
+    margin-right: 10px;
+    border: 1px solid black;
+}
+
+.buttons:hover{
+    cursor: pointer;
+}
+
+.yes{
+    background-color: rgb(186, 254, 231);
+}
+
+.no{
+    background-color: rgb(254, 154, 154);
+}
+
+.hide{
+    display: none;
+}

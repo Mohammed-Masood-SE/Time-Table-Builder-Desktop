@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import toast, { Toaster } from "react-hot-toast";
 import NavBar from "../Components/NavBar";
 import styles from "../Styles/Home.module.css";
 import ModifyClassrooms from "./ClassroomManager/ModifyClassrooms";
@@ -28,7 +29,7 @@ function Home() {
         // Use the data here
         setAvailableClassrooms(data);
       } catch (error) {
-        console.error("Error getting Available Classrooms from file:", error);
+        toast.error("Error getting Available Classrooms from file : <Home.js>");
       }
     };
     let getAvailableLabs = async () => {
@@ -37,7 +38,7 @@ function Home() {
         // Use the data here
         setAvailableLabs(data);
       } catch (error) {
-        console.error("Error getting Available Labs from file:", error);
+        toast.error("Error getting Available Labs from file : <Home.js>");
       }
     };
     getAvailableClassrooms();
@@ -67,6 +68,7 @@ function Home() {
       {selectedScreen === 7 && <AssignSubjects />}
       {selectedScreen === 8 && <TimeTableBuilder />}
       {selectedScreen === 9 && <ViewTimeTables />}
+      <Toaster />
     </div>
   );
 }

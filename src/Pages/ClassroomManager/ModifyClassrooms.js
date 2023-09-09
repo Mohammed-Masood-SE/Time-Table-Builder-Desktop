@@ -1,7 +1,9 @@
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 import styles from "../../Styles/ModifyClassrooms.module.css";
 import closeIcon from "../../Icons/X.png";
 import saveToFile from "../../UtilityFunctions/SaveToFile";
+import toast, { Toaster } from "react-hot-toast";
+import ConfirmButton from "../../Components/ConfirmButton";
 
 function ModifyClassrooms({
   availableClassrooms,
@@ -11,16 +13,16 @@ function ModifyClassrooms({
 }) {
   const classNameRef = useRef(null);
   const totalSeatsRef = useRef(null);
-
+  const [confirm, setConfirm] = useState(false);
   function addAsClassroom() {
     //Check If ClassName Input Has Some Value
     if (!classNameRef.current.value) {
-      console.log("No Value");
+      toast.error("Please Enter Some Class Name");
       return;
     }
     //Check If Total Seats Input Has Some Value
     if (!totalSeatsRef.current.value) {
-      console.log("Enter Seats Value");
+      toast.error("Please Enter Total Seats Available ");
       return;
     }
     //Check If Class Name Already Exists , in classrooms and in labs  , If Not Add It
@@ -28,7 +30,7 @@ function ModifyClassrooms({
       availableClassrooms[classNameRef.current.value] ||
       availableLabs[classNameRef.current.value]
     ) {
-      console.log("Class Name Already Exists");
+      toast.error("Class Name Already Exists");
       return;
     } else {
       let x = { ...availableClassrooms };
@@ -37,18 +39,19 @@ function ModifyClassrooms({
       };
       setAvailableClassrooms(x);
       saveToFile(x, "classrooms");
+      toast.success("Created New Classroom");
     }
   }
 
   function addAsLab() {
     //Check If ClassName Input Has Some Value
     if (!classNameRef.current.value) {
-      console.log("No Value");
+      toast.error("Please Enter Some Lab Name");
       return;
     }
     //Check If Total Seats Input Has Some Value
     if (!totalSeatsRef.current.value) {
-      console.log("Enter Seats Value");
+      toast.error("Please Enter Total Seats Available ");
       return;
     }
     //Check If Class Name Already Exists , in classrooms and in labs , If Not Add It
@@ -56,7 +59,7 @@ function ModifyClassrooms({
       availableLabs[classNameRef.current.value] ||
       availableClassrooms[classNameRef.current.value]
     ) {
-      console.log("Lab Name Already Exists");
+      toast.error("Lab Name Already Exists");
       return;
     } else {
       let x = { ...availableLabs };
@@ -65,21 +68,37 @@ function ModifyClassrooms({
       };
       setAvailableLabs(x);
       saveToFile(x, "labs");
+      toast.success("Created New Lab");
     }
+  }
+
+  function customDeleteToast(roomNumber, onClick) {
+    toast.custom(
+      <ConfirmButton
+        value={roomNumber}
+        onClick={() => {
+          onClick(roomNumber);
+        }}
+      />
+    );
   }
 
   function deleteClassRoom(roomNumber) {
     let x = { ...availableClassrooms };
-    delete x[roomNumber];
-    setAvailableClassrooms(x);
-    saveToFile(x, "classrooms");
+    if (x[roomNumber]) {
+      delete x[roomNumber];
+      setAvailableClassrooms(x);
+      saveToFile(x, "classrooms");
+    }
   }
 
   function deleteLab(labName) {
     let x = { ...availableLabs };
-    delete x[labName];
-    setAvailableLabs(x);
-    saveToFile(x, "labs");
+    if (x[labName]) {
+      delete x[labName];
+      setAvailableLabs(x);
+      saveToFile(x, "labs");
+    }
   }
 
   return (
@@ -122,7 +141,7 @@ function ModifyClassrooms({
                 </div>
                 <img
                   onClick={() => {
-                    deleteClassRoom(roomNumber);
+                    customDeleteToast(roomNumber, deleteClassRoom);
                   }}
                   className={styles.closeIcon}
                   src={closeIcon}
@@ -145,7 +164,7 @@ function ModifyClassrooms({
                 </div>
                 <img
                   onClick={() => {
-                    deleteLab(roomNumber);
+                    customDeleteToast(roomNumber, deleteLab);
                   }}
                   className={styles.closeIcon}
                   src={closeIcon}
