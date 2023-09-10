@@ -4,6 +4,208 @@
     top:50px;
     left: 50px;
     right: 50px;
-    bottom: 50px;
     border-radius: 10px;
+    margin-bottom: 50px;
+    padding: 50px;
+}
+
+.header{
+    text-align: center;
+    font-weight: 200;
+    margin-top: 20px;
+    color: #00ADB5;
+    margin-bottom: 20px;
+}
+
+.selectorContainer{
+    width: 100%;
+    text-align: center;
+}
+
+.branchSelector{
+    padding: 10px;
+    border-radius: 10px;
+    font-weight: bold;
+    outline: none;
+    border: 1px solid black;
+}
+
+
+.createButton{
+    padding: 5px;
+    width: 210px;
+    margin-top: 20px;
+    margin-left: 20px;
+    outline: none;
+    border: 1px solid black;
+    border-radius: 8px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: #00ADB5;
+    transition: 0.2s;
+}
+.createButton:hover{
+    cursor: pointer;
+    background-color: #abe9ec;
+}
+
+
+
+.popUp{
+    background-color: #393E46;
+    position: absolute;
+    top:0px;
+    left: 0px;
+    right: 0px;
+    border-radius: 10px;
+    margin-bottom: 50px;
+    padding: 50px;
+    z-index: 5;
+    min-height: 70vh;
+}
+
+.closeIcon{
+    position: absolute;
+    width: 50px;
+    right: 0px;
+    top: 0px;
+    transition: 0.2s;
+}
+
+.closeIcon:hover{
+    cursor: pointer;
+    width: 55px;
+}
+
+.deleteGroup{
+    width: 30px;
+    transition: 0.2s;
+}
+
+.deleteGroup:hover{
+    cursor: pointer;
+    width: 35px;
+}
+
+
+.inputContainer{
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    align-items: left;
+    margin-left: 40px;
+}
+
+.inputContainer input{
+    width: 200px;
+    padding: 5px;
+    outline: none;
+    border: none;
+    margin-right: 20px;
+    border-radius: 2px;
+
+}
+
+.subText{
+    font-weight: 200;
+    color: #cdd3d3;
+    margin-bottom: 20px;
+    font-size: x-large;
+}
+
+.marginBottom{
+    margin-bottom: 20px;
+}
+
+.tableSubjectsDisplay{
+    margin-top: 40px;
+    width: 100%;
+    max-width: 100%;
+    border-collapse: collapse;
+    border-collapse: separate;
+    border-spacing: 0;
+    border: 1px solid white;
+    background-color: #000000;
+    transition: 0.2s;
+    text-align: center;
+    border-radius: 5px;
+}
+
+.tableSubjectsDisplay  td{
+    padding: 10px;
+    text-align: center; 
+    transition: 0.2s;
+}
+
+.labStyles:hover{
+    background-color: #d5d6ad;
+    color: #000000;
+    transition: 0.2s;
+}
+
+.groupStyles:hover{
+    background-color: #9dc9ce;
+    color: #000000;
+    transition: 0.2s;
+}
+
+.normal:hover{
+    background-color: #e2e2e2e9;
+    color: #000000;
+    transition: 0.2s;
+}
+
+
+.tableGroupDisplay{
+    min-width: 45%;
+    border-collapse: collapse;
+    border-collapse: separate;
+    border-spacing: 0;
+    border: 1px solid white;
+}
+
+.tableGroupDisplay td{
+    border: 1px solid rgb(255, 255, 255);
+    color: white;
+}
+
+
+.tableGroupDisplay td {
+    padding: 10px;
+    text-align: center;   
+}
+
+.normalClassButton{
+    padding: 5px;
+    width: 210px;
+    margin-top: 20px;
+    outline: none;
+    border: 1px solid black;
+    border-radius: 8px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: #00ADB5;
+    transition: 0.2s;
+}
+.normalClassButton:hover{
+    cursor: pointer;
+    background-color: #abe9ec;
+}
+
+.labButton{
+    padding: 5px;
+    width: 210px;
+    margin-top: 20px;
+    margin-left: 20px;
+    outline: none;
+    border: 1px solid black;
+    border-radius: 8px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: #bfc211;
+    transition: 0.2s;
+}
+.labButton:hover{
+    cursor: pointer;
+    background-color: #e2ecab;
 }

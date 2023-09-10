@@ -1,13 +1,13 @@
 .container{
     position: absolute;
-    z-index: 2;
+    z-index: 10;
 }
 
 .burgerMenu{
     width: 40px;
     margin-left: 10px;
     margin-top: 10px;
-    z-index: 2;
+    z-index: 10;
 }
 
 .backIcon{

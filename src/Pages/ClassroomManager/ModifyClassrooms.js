@@ -1,8 +1,8 @@
-import { useRef, useEffect, useState } from "react";
+import { useRef } from "react";
 import styles from "../../Styles/ModifyClassrooms.module.css";
 import closeIcon from "../../Icons/X.png";
 import saveToFile from "../../UtilityFunctions/SaveToFile";
-import toast, { Toaster } from "react-hot-toast";
+import toast from "react-hot-toast";
 import ConfirmButton from "../../Components/ConfirmButton";
 
 function ModifyClassrooms({
@@ -13,7 +13,7 @@ function ModifyClassrooms({
 }) {
   const classNameRef = useRef(null);
   const totalSeatsRef = useRef(null);
-  const [confirm, setConfirm] = useState(false);
+
   function addAsClassroom() {
     //Check If ClassName Input Has Some Value
     if (!classNameRef.current.value) {
@@ -27,14 +27,16 @@ function ModifyClassrooms({
     }
     //Check If Class Name Already Exists , in classrooms and in labs  , If Not Add It
     if (
-      availableClassrooms[classNameRef.current.value] ||
-      availableLabs[classNameRef.current.value]
+      availableClassrooms[classNameRef.current.value.toLowerCase()] ||
+      availableLabs[classNameRef.current.value.toLowerCase()]
     ) {
-      toast.error("Class Name Already Exists");
+      toast.error(
+        "Class Name Already Exists / Already Used This Name In A Lab"
+      );
       return;
     } else {
       let x = { ...availableClassrooms };
-      x[classNameRef.current.value] = {
+      x[classNameRef.current.value.toLowerCase()] = {
         totalSeats: parseInt(totalSeatsRef.current.value),
       };
       setAvailableClassrooms(x);
@@ -56,14 +58,16 @@ function ModifyClassrooms({
     }
     //Check If Class Name Already Exists , in classrooms and in labs , If Not Add It
     if (
-      availableLabs[classNameRef.current.value] ||
-      availableClassrooms[classNameRef.current.value]
+      availableLabs[classNameRef.current.value.toLowerCase()] ||
+      availableClassrooms[classNameRef.current.value.toLowerCase()]
     ) {
-      toast.error("Lab Name Already Exists");
+      toast.error(
+        "Lab Name Already Exists / Already Used This Name In A Classroom"
+      );
       return;
     } else {
       let x = { ...availableLabs };
-      x[classNameRef.current.value] = {
+      x[classNameRef.current.value.toLowerCase()] = {
         totalSeats: parseInt(totalSeatsRef.current.value),
       };
       setAvailableLabs(x);
@@ -130,7 +134,7 @@ function ModifyClassrooms({
           <h1 className={styles.displayContainerHeader}>
             Available Classrooms
           </h1>
-          <div className={styles.roomHolder}>
+          <div>
             {Object.keys(availableClassrooms).map((roomNumber) => (
               <div key={roomNumber} className={styles.roomContainer}>
                 <div>
@@ -153,7 +157,7 @@ function ModifyClassrooms({
         </div>
         <div>
           <h1 className={styles.displayContainerHeader}>Available Labs</h1>
-          <div className={styles.roomHolder}>
+          <div>
             {Object.keys(availableLabs).map((roomNumber) => (
               <div key={roomNumber} className={styles.roomContainer}>
                 <div>
@@ -164,7 +168,7 @@ function ModifyClassrooms({
                 </div>
                 <img
                   onClick={() => {
-                    customDeleteToast(roomNumber, deleteLab);
+                    customDeleteToast(roomNumber.toLowerCase(), deleteLab);
                   }}
                   className={styles.closeIcon}
                   src={closeIcon}

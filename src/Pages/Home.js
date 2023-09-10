@@ -4,7 +4,6 @@ import NavBar from "../Components/NavBar";
 import styles from "../Styles/Home.module.css";
 import ModifyClassrooms from "./ClassroomManager/ModifyClassrooms";
 import CreateBranch from "./BranchesManager/CreateBranch";
-import ModifyBranch from "./BranchesManager/ModifyBranch";
 import CreateSubjects from "./BranchesManager/CreateSubjects";
 import CreateFaculty from "./FacultiesManager/CreateFaculty";
 import ModifyFaculty from "./FacultiesManager/ModifyFaculty";
@@ -16,10 +15,12 @@ import readFromFile from "../UtilityFunctions/ReadFromFile";
 import saveToFile from "../UtilityFunctions/SaveToFile";
 
 function Home() {
-  const [selectedScreen, setSelectedScreen] = useState(0);
+  const [selectedScreen, setSelectedScreen] = useState(1);
   const [availableClassrooms, setAvailableClassrooms] = useState({});
   const [availableLabs, setAvailableLabs] = useState({});
+  const [branches, setBranches] = useState({});
 
+  // LOADING TXT FILES INTO STATE
   useEffect(() => {
     // Used To Create The Initial Directory If It Does Not Exist
     createInitialDirectory();
@@ -46,8 +47,20 @@ function Home() {
         saveToFile({}, "labs");
       }
     };
+    let getBranches = async () => {
+      try {
+        const data = await readFromFile("branches.txt");
+        // Use the data here
+        setBranches(data);
+      } catch (error) {
+        // this means text files dont exist , so create new txt files
+        toast.success("Loaded New Branches : <Home.js> (Ignore)");
+        saveToFile({}, "branches");
+      }
+    };
     getAvailableClassrooms();
     getAvailableLabs();
+    getBranches();
   }, []);
 
   return (
@@ -65,14 +78,22 @@ function Home() {
           availableLabs={availableLabs}
         />
       )}
-      {selectedScreen === 2 && <CreateBranch />}
-      {selectedScreen === 3 && <ModifyBranch />}
-      {selectedScreen === 4 && <CreateSubjects />}
-      {selectedScreen === 5 && <CreateFaculty />}
-      {selectedScreen === 6 && <ModifyFaculty />}
-      {selectedScreen === 7 && <AssignSubjects />}
-      {selectedScreen === 8 && <TimeTableBuilder />}
-      {selectedScreen === 9 && <ViewTimeTables />}
+      {selectedScreen === 2 && (
+        <CreateBranch setBranches={setBranches} branches={branches} />
+      )}
+      {selectedScreen === 3 && (
+        <CreateSubjects
+          branches={branches}
+          availableClassrooms={availableClassrooms}
+          availableLabs={availableLabs}
+          setBranches={setBranches}
+        />
+      )}
+      {selectedScreen === 4 && <CreateFaculty />}
+      {selectedScreen === 5 && <ModifyFaculty />}
+      {selectedScreen === 6 && <AssignSubjects />}
+      {selectedScreen === 7 && <TimeTableBuilder />}
+      {selectedScreen === 8 && <ViewTimeTables />}
       <Toaster />
     </div>
   );

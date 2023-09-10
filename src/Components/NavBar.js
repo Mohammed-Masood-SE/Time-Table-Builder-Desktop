@@ -46,19 +46,18 @@ function NavBar({ setSelectedScreen, selectedScreen }) {
         <div className={styles.navItems}>
           <h1>Branches Manager</h1>
           {selectableNavLinks("Create New Branch", 2)}
-          {selectableNavLinks("Modify Existing Branchs", 3)}
-          {selectableNavLinks("Create Subjects For Branch", 4)}
+          {selectableNavLinks("Create Subjects For Branch", 3)}
         </div>
         <div className={styles.navItems}>
           <h1>Faculties Manager</h1>
-          {selectableNavLinks("Create New Faculty", 5)}
-          {selectableNavLinks("Modify Existing Faculties", 6)}
-          {selectableNavLinks("Assign Subjects To Faculty", 7)}
+          {selectableNavLinks("Create New Faculty", 4)}
+          {selectableNavLinks("Modify Existing Faculties", 5)}
+          {selectableNavLinks("Assign Subjects To Faculty", 6)}
         </div>
         <div className={styles.navItems}>
           <h1>Builder</h1>
-          {selectableNavLinks("Time Table Builder </>", 8)}
-          {selectableNavLinks("View Time Tables", 9)}
+          {selectableNavLinks("Time Table Builder </>", 7)}
+          {selectableNavLinks("View Time Tables", 8)}
         </div>
         <div className={styles.navItems}>
           <h1>Extras</h1>
