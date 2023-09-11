@@ -19,6 +19,7 @@ function Home() {
   const [availableClassrooms, setAvailableClassrooms] = useState({});
   const [availableLabs, setAvailableLabs] = useState({});
   const [branches, setBranches] = useState({});
+  const [faculties, setFaculties] = useState({});
 
   // LOADING TXT FILES INTO STATE
   useEffect(() => {
@@ -58,9 +59,21 @@ function Home() {
         saveToFile({}, "branches");
       }
     };
+    let getFaculties = async () => {
+      try {
+        const data = await readFromFile("faculties.txt");
+        // Use the data here
+        setFaculties(data);
+      } catch (error) {
+        // this means text files dont exist , so create new txt files
+        toast.success("Loaded New Faculties : <Home.js> (Ignore)");
+        saveToFile({}, "faculties");
+      }
+    };
     getAvailableClassrooms();
     getAvailableLabs();
     getBranches();
+    getFaculties();
   }, []);
 
   return (
@@ -89,7 +102,9 @@ function Home() {
           setBranches={setBranches}
         />
       )}
-      {selectedScreen === 4 && <CreateFaculty />}
+      {selectedScreen === 4 && (
+        <CreateFaculty faculties={faculties} setFaculties={setFaculties} />
+      )}
       {selectedScreen === 5 && <ModifyFaculty />}
       {selectedScreen === 6 && <AssignSubjects />}
       {selectedScreen === 7 && <TimeTableBuilder />}
