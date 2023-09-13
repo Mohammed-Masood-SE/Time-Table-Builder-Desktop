@@ -16,6 +16,12 @@ function ModifyFaculty({ faculties, setFaculties }) {
   }
 
   function addOffDay() {
+    if (!offDayRef.current.value || offDayRef.current.value === "none") {
+      toast.error(
+        "No Off Day Selected , Can Be Because No More Off Days Are Left To Assign"
+      );
+      return;
+    }
     let temp = { ...faculties };
     if (temp[selectedFaculty].offDays.includes(offDayRef.current.value)) {
       toast.error(
@@ -41,9 +47,9 @@ function ModifyFaculty({ faculties, setFaculties }) {
   }
   return (
     <div className={styles.container}>
-      <h1
-        className={styles.header}
-      >{`< ModifyFaculty > < ${selectedFaculty} >`}</h1>
+      <h1 className={styles.header}>{`< ModifyFaculty > ${
+        selectedFaculty ? `< ${selectedFaculty} >` : ""
+      } `}</h1>
       <div className={styles.selectorContainer}>
         <select
           defaultValue={"none"}
@@ -97,7 +103,7 @@ function ModifyFaculty({ faculties, setFaculties }) {
               </thead>
               <tbody>
                 {faculties[selectedFaculty].offDays.map((offday) => (
-                  <tr className={styles.offDayRow}>
+                  <tr className={styles.offDayRow} key={offday}>
                     <td>{offday}</td>
                     <td>
                       <img
@@ -106,7 +112,7 @@ function ModifyFaculty({ faculties, setFaculties }) {
                         }}
                         className={styles.deleteOffDay}
                         src={closeIcon}
-                        alt="Delete Branch"
+                        alt="Delete Off Day"
                       />
                     </td>
                   </tr>
