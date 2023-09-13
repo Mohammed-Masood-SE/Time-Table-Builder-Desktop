@@ -4,6 +4,84 @@
     top:50px;
     left: 50px;
     right: 50px;
-    bottom: 50px;
     border-radius: 10px;
+    margin-bottom: 50px;
+    padding: 50px;
+}
+
+
+
+.header{
+    text-align: center;
+    font-weight: 200;
+    margin-top: 20px;
+    color: #00ADB5;
+
+}
+
+.selectorContainer{
+    width: 100%;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.facultySelector{
+    padding: 10px;
+    border-radius: 10px;
+    font-weight: bold;
+    outline: none;
+    border: 1px solid black;
+}
+
+.tableOffDaysDisplay{
+    margin-top: 40px;
+    width: 100%;
+    max-width: 100%;
+    border-collapse: collapse;
+    border-collapse: separate;
+    border-spacing: 0;
+    border: 1px solid white;
+    background-color: #000000;
+    transition: 0.2s;
+    text-align: center;
+    border-radius: 5px;
+}
+
+.tableOffDaysDisplay  td{
+    padding: 10px;
+    text-align: center; 
+    transition: 0.2s;
+}
+.offDayRow{
+    transition: 0.1s;
+}
+.offDayRow:hover{
+    background-color: rgb(255, 255, 255);
+    color: #000000;
+}
+
+.addOffDayButton{
+    margin-top: 20px;
+    padding: 5px;
+    width: 210px;
+    margin-right: 20px;
+    outline: none;
+    border: 1px solid black;
+    border-radius: 8px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: #00ADB5;
+}
+
+.addOffDayButton:hover{
+    cursor: pointer;
+}
+
+.deleteOffDay{
+    width: 30px;
+    transition: 0.2s;
+}
+
+.deleteOffDay:hover{
+    cursor: pointer;
 }

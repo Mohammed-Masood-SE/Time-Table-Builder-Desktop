@@ -105,7 +105,9 @@ function Home() {
       {selectedScreen === 4 && (
         <CreateFaculty faculties={faculties} setFaculties={setFaculties} />
       )}
-      {selectedScreen === 5 && <ModifyFaculty />}
+      {selectedScreen === 5 && (
+        <ModifyFaculty faculties={faculties} setFaculties={setFaculties} />
+      )}
       {selectedScreen === 6 && <AssignSubjects />}
       {selectedScreen === 7 && <TimeTableBuilder />}
       {selectedScreen === 8 && <ViewTimeTables />}
