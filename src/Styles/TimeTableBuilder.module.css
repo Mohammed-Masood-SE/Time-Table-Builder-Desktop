@@ -4,6 +4,18 @@
     top:50px;
     left: 50px;
     right: 50px;
-    bottom: 50px;
     border-radius: 10px;
+    margin-bottom: 50px;
+    padding: 50px;
 }
+
+.header{
+    text-align: center;
+    font-weight: 200;
+    margin-top: 20px;
+    color: #00ADB5;
+    margin-bottom: 60px;
+
+}
+
+

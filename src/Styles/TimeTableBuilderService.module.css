@@ -1,0 +1,68 @@
+.branchNameHeader{
+    text-align: center;
+    font-weight: 200;
+    margin-top: 20px;
+    color: #00ADB5;
+    margin-bottom: 10px;
+}
+
+.TimeTable {
+    border-collapse: collapse;
+    width: 100%;
+    margin-bottom: 40px;
+}
+
+
+.TimeTable td{
+    border: 1px solid #ccc;
+    text-align: center;
+    width: 100px;
+    white-space: nowrap; 
+    overflow: hidden; 
+    text-overflow: ellipsis; 
+    padding: 10px;
+    position: relative;
+}
+
+.TimeTable tbody tr td:hover {
+    cursor: pointer;
+}
+
+.subjectButton:hover , .groupedButton:hover , .labButton:hover{
+    cursor: pointer;
+}
+
+.subjectButton{
+    padding-top: 2px;
+    padding-bottom: 2px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    outline: none;
+    border: none;
+}
+
+.groupedButton{
+    padding-top: 2px;
+    padding-bottom: 2px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    background-color: #00ADB5;
+    outline: none;
+    border: none;
+}
+
+.labButton{
+    padding-top: 2px;
+    padding-bottom: 2px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    background-color: #e5eba7;
+    outline: none;
+    border: none;
+}

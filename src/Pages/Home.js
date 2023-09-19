@@ -115,7 +115,7 @@ function Home() {
           branches={branches}
         />
       )}
-      {selectedScreen === 7 && <TimeTableBuilder />}
+      {selectedScreen === 7 && <TimeTableBuilder branches={branches} />}
       {selectedScreen === 8 && <ViewTimeTables />}
       <Toaster />
     </div>
