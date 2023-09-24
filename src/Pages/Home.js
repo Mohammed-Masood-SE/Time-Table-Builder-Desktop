@@ -20,6 +20,9 @@ function Home() {
   const [availableLabs, setAvailableLabs] = useState({});
   const [branches, setBranches] = useState({});
   const [faculties, setFaculties] = useState({});
+  const [finalTimeTable, setFinalTimeTable] = useState({});
+  const [usedClassrooms, setUsedClassroom] = useState(false);
+  const [usedFaculties, setUsedFaculties] = useState(false);
 
   // LOADING TXT FILES INTO STATE
   useEffect(() => {
@@ -70,10 +73,76 @@ function Home() {
         saveToFile({}, "faculties");
       }
     };
+    let getUsedFaculties = async () => {
+      try {
+        const data = await readFromFile("usedfaculties.txt");
+        // Use the data here
+        setUsedFaculties(data);
+      } catch (error) {
+        // this means text files dont exist , so create new txt files
+        toast.success("Loaded New Used Faculties : <Home.js> (Ignore)");
+        let temp = [
+          [[], [], [], [], [], [], [], []],
+          [[], [], [], [], [], [], [], []],
+          [[], [], [], [], [], [], [], []],
+          [[], [], [], [], [], [], [], []],
+          [[], [], [], [], [], [], [], []],
+        ];
+        saveToFile(temp, "usedfaculties");
+      }
+    };
+    let getUsedClassRooms = async () => {
+      try {
+        const data = await readFromFile("usedclassrooms.txt");
+        // Use the data here
+        setUsedClassroom(data);
+      } catch (error) {
+        // this means text files dont exist , so create new txt files
+        toast.success("Loaded New Used Used Classrooms : <Home.js> (Ignore)");
+        let temp = [
+          [[], [], [], [], [], [], [], []],
+          [[], [], [], [], [], [], [], []],
+          [[], [], [], [], [], [], [], []],
+          [[], [], [], [], [], [], [], []],
+          [[], [], [], [], [], [], [], []],
+        ];
+        saveToFile(temp, "usedclassrooms");
+      }
+    };
+    let getFinalTimeTable = async () => {
+      try {
+        const data = await readFromFile("finalTimeTable.txt");
+        // Use the data here
+        setFinalTimeTable(data);
+      } catch (error) {
+        // this means text files dont exist , so create new txt files
+        toast.success("Loaded New Final Time Table : <Home.js> (Ignore)");
+        let temp = {};
+        try {
+          const data = await readFromFile("branches.txt");
+          Object.keys(data).map((key) => {
+            temp[key] = {
+              Monday: [],
+              Tuesday: [],
+              Wednesday: [],
+              Thrusday: [],
+              Friday: [],
+            };
+          });
+        } catch (error) {
+          toast.error("Couldnt Find Exisiting Branches");
+        }
+
+        saveToFile(temp, "finalTimeTable");
+      }
+    };
     getAvailableClassrooms();
     getAvailableLabs();
     getBranches();
     getFaculties();
+    getUsedFaculties();
+    getUsedClassRooms();
+    getFinalTimeTable();
   }, []);
 
   return (
@@ -115,7 +184,18 @@ function Home() {
           branches={branches}
         />
       )}
-      {selectedScreen === 7 && <TimeTableBuilder branches={branches} />}
+      {selectedScreen === 7 && (
+        <TimeTableBuilder
+          branches={branches}
+          finalTimeTable={finalTimeTable}
+          setFinalTimeTable={setFinalTimeTable}
+          usedClassrooms={usedClassrooms}
+          usedFaculties={usedFaculties}
+          setUsedClassroom={setUsedClassroom}
+          setUsedFaculties={setUsedFaculties}
+          availableClassrooms={availableClassrooms}
+        />
+      )}
       {selectedScreen === 8 && <ViewTimeTables />}
       <Toaster />
     </div>

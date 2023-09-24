@@ -79,34 +79,36 @@ function CreateSubjects({
             <td>Remove</td>
           </tr>
         </thead>
-        {branches[selectedBranch] &&
-          branches[selectedBranch].subjects.map((sub) => (
-            <tr
-              key={sub.subjectName}
-              className={
-                sub.isLab
-                  ? styles.labStyles
-                  : sub.isGrouped
-                  ? styles.groupStyles
-                  : styles.normal
-              }
-            >
-              <td>{sub.subjectName}</td>
-              <td>{sub.totalHours}</td>
-              <td>{sub.requiredClass}</td>
-              <td>{sub.groupedWith.join(", ")}</td>
-              <td>
-                <img
-                  onClick={() => {
-                    deleteSubject(sub.subjectName);
-                  }}
-                  className={styles.deleteGroup}
-                  src={closeIcon}
-                  alt="Delete Branch"
-                />
-              </td>
-            </tr>
-          ))}
+        <tbody>
+          {branches[selectedBranch] &&
+            branches[selectedBranch].subjects.map((sub) => (
+              <tr
+                key={sub.subjectName}
+                className={
+                  sub.isLab
+                    ? styles.labStyles
+                    : sub.isGrouped
+                    ? styles.groupStyles
+                    : styles.normal
+                }
+              >
+                <td>{sub.subjectName}</td>
+                <td>{sub.totalHours}</td>
+                <td>{sub.requiredClass}</td>
+                <td>{sub.groupedWith.join(", ")}</td>
+                <td>
+                  <img
+                    onClick={() => {
+                      deleteSubject(sub.subjectName);
+                    }}
+                    className={styles.deleteGroup}
+                    src={closeIcon}
+                    alt="Delete Branch"
+                  />
+                </td>
+              </tr>
+            ))}
+        </tbody>
       </table>
 
       {createSubjectMenu && (
